@@ -88,24 +88,29 @@
         padding-top: 20px;
         margin-bottom: 10px;
       }
-
     </style>
   </head>
+  <noscript>
+    <h1>Enable Javascript to continue.</h1>
+  </noscript>
+
   <body>
-    <p>Ange festens lokation för att fortsätta (tips: titta på inbjudan)</p>
-    <p>Syötä juhlien paikka jatkaaksesi (vinkki: katso kutsua)</p>
-    <p>Enter the location of the party to proceed (hint: look at the invite)</p>
+    <div id="content" style="display: none">
+      <p>Ange festens lokation för att fortsätta (tips: titta på inbjudan)</p>
+      <p>Syötä juhlien paikka jatkaaksesi (vinkki: katso kutsua)</p>
+      <p>Enter the location of the party to proceed (hint: look at the invite)</p>
 
-    <div class="input-container">
-      <div class="flex-row">
-        <input type="text" id="accessCodeInput" onkeypress="checkEnter(event)" />
+      <div class="input-container">
+        <div class="flex-row">
+          <input type="text" id="accessCodeInput" onkeypress="checkEnter(event)" />
 
-        <button id="submitButton" onclick="submitCode()">Submit</button>
+          <button id="submitButton" onclick="submitCode()">Submit</button>
+        </div>
+        <p id="error" style="justify-content: flex-start; display: none; color: red">Wrong code!</p>
       </div>
-      <p id="error" style="justify-content: flex-start; display: none; color: red">Wrong code!</p>
     </div>
-
     <script>
+      document.getElementById('content').style.display = 'block'
       function setLoading(loading) {
         if (loading) {
           document.body.classList.add('loading')
