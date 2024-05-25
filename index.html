@@ -46,6 +46,11 @@
         font-size: 16px;
         border-radius: 5px;
         border: 1px solid;
+        margin-bottom: 5px;
+      }
+
+      #error {
+        margin-top: 5px;
       }
 
       #submitButton {
@@ -78,19 +83,27 @@
         align-items: center;
         justify-content: center;
       }
+
+      .input-container {
+        padding-top: 20px;
+        margin-bottom: 10px;
+      }
+
     </style>
   </head>
   <body>
-    <p>Ange festens lokation för att fortsätta</p>
-    <p>Syötä juhlien paikka jatkaaksesi</p>
-    <p>Enter the location of the party to proceed</p>
+    <p>Ange festens lokation för att fortsätta (tips: titta på inbjudan)</p>
+    <p>Syötä juhlien paikka jatkaaksesi (vinkki: katso kutsua)</p>
+    <p>Enter the location of the party to proceed (hint: look at the invite)</p>
 
-    <div class="flex-row">
-      <input type="text" id="accessCodeInput" onkeypress="checkEnter(event)" />
+    <div class="input-container">
+      <div class="flex-row">
+        <input type="text" id="accessCodeInput" onkeypress="checkEnter(event)" />
 
-      <button id="submitButton" onclick="submitCode()">Submit</button>
+        <button id="submitButton" onclick="submitCode()">Submit</button>
+      </div>
+      <p id="error" style="justify-content: flex-start; display: none; color: red">Wrong code!</p>
     </div>
-    <p id="error" style="justify-content: flex-start; display: none; color: red">Wrong code!</p>
 
     <script>
       function setLoading(loading) {
@@ -126,7 +139,7 @@
         }).then(async (data) => {
           console.log(data)
           if (data.status !== 200) {
-            document.getElementById('error').style.display = 'block'
+            document.getElementById('error').style.display = 'flex'
             return
           }
           localStorage.setItem('accessCode', code)
