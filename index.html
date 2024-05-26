@@ -82,7 +82,8 @@
 
       .input-container {
         padding-top: 20px;
-        margin-bottom: 10px;
+        width: 300px;
+        margin: 0 auto;
       }
     </style>
   </head>
@@ -138,11 +139,11 @@
           },
           body: JSON.stringify({ password: code }),
         }).then(async (data) => {
-          console.log(data)
           if (data.status !== 200) {
             document.getElementById('error').style.display = 'flex'
             return
           }
+
           localStorage.setItem('accessCode', code)
           const text = await data.text()
           document.open()
