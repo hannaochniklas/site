@@ -93,9 +93,10 @@
 
   <body>
     <div id="content" style="display: none">
-      <p>Ange festens lokation för att fortsätta (tips: titta på inbjudan)</p>
-      <p>Syötä juhlien paikka jatkaaksesi (vinkki: katso kutsua)</p>
-      <p>Enter the location of the party to proceed (hint: look at the invite)</p>
+      <h1>Gallery</h1>
+      <p>Ange festens lokation för att fortsätta</p>
+      <p>Syötä juhlien paikka jatkaaksesi</p>
+      <p>Enter the location of the party to proceed</p>
 
       <div class="input-container">
         <div class="flex-row">
@@ -132,7 +133,7 @@
       }
 
       function submitCode(code = document.getElementById('accessCodeInput').value) {
-        fetch('https://super-secret-hanna-niklas.fly.dev/login', {
+        fetch('https://super-secret-hanna-niklas.fly.dev/gallery', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -150,7 +151,7 @@
           document.write(text)
           document.close()
           document.querySelectorAll('script').forEach((script) => {
-            if (!script.src) new Function(script.text)()
+            if (!script.src) new Function(script.text)
             else {
               fetch(script.src).then((response) => {
                 return response.text().then((text) => {
